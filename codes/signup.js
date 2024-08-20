@@ -20,24 +20,32 @@ signinForm.addEventListener("submit", (e) => {
     email: email.value,
     password: password.value,
   };
-  let users = localStorage.getItem("users");
+  let users = localStorage.getItem("users"); //initialize a var to get users from local storage
+
   if (users) {
-    let usernameExists = false;
-    users = JSON.parse(users);
+    //if the var exist as a key in local storage,do this(note:always check if something exists when dealing with invisible data)
+
+    let usernameExists = false; //this is for handling duplicate usernames
+
+    users = JSON.parse(users); //when getting from a database, change the json file to a normal object
+
     for (let x = 0; x < users.length; x++) {
+      //loop through the changed json file to check if the username exists
       if (jsonData.name === users[x].name) {
+        // if it exists, alert the user it exists and update the existence var
         alert("username already exists");
         usernameExists = true;
-        break;
+        break; // always break the loop after an item has been found while looping
       }
     }
     if (!usernameExists) {
-      users.push(jsonData);
-      window.location.href = "../index.html";
+      //handle the opposite scenario of an inexistent username, allow the user name to be created
+      users.push(jsonData); // push all the new details of the user data to the user key...remember,user is the object created from json
+      window.location.href = "../index.html"; // redirect the user to the login page
     }
   } else {
-    users = [jsonData];
+    users = [jsonData]; // if users doesnt exists in the local storage,let the registration inputs be stored in an array of objects called users
   }
   console.log(JSON.stringify(users));
-  localStorage.setItem("users", JSON.stringify(users));
+  localStorage.setItem("users", JSON.stringify(users)); // push the array of object to the local storage and make sure to change to a json string using JSON.stringify(object)
 });

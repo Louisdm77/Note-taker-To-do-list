@@ -24,6 +24,9 @@
       body {
         font-family: "Moderustic", sans-serif;
       }
+      .hidden {
+        display: none;
+      }
       table {
         width: 100%;
       }
@@ -74,19 +77,72 @@
           <h3>Welcome <span class="name">Dan</span></h3>
           <p>Anything to do today?!</p>
         </div>
-        <div class="col-sm-12 col-md-6" style="text-align: end">
-          <h2>
-            <a
-              href=""
+        <div
+          class="col-sm-12 col-md-6 mb-5 prof"
+          style="text-align: end; position: relative"
+        >
+          <h2 style="position: relative">
+            ><button
+              class="profile"
               style="
+                border: none;
+                background: none;
                 text-decoration: none;
                 color: rgb(236, 152, 232);
                 border: 1px solid rgb(236, 152, 232);
                 padding: 10px;
               "
-              >Profile Details</a
             >
+              Profile Details
+            </button>
           </h2>
+
+          <div
+            class="details hidden"
+            style="
+              position: absolute;
+              width: fit-content;
+
+              text-align: start;
+              top: -30%;
+              right: 2%;
+              background: linear-gradient(
+                to right,
+                rgb(75, 94, 75),
+                rgb(82, 77, 77)
+              );
+              padding: 20px;
+              border-radius: 10px;
+            "
+          >
+            <button
+              class="cancel"
+              style="
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 3px;
+                background-color: palevioletred;
+                border-radius: inherit;
+              "
+            >
+              x
+            </button>
+            <h4>Name: <span class="namee">null</span></h4>
+            <h4>Email: <span class="email">null</span></h4>
+            <h4>My ID: <span class="id">null</span></h4>
+            <button
+              class="logout"
+              style="
+                background-color: red;
+                border: none;
+                padding: 10px;
+                color: white;
+              "
+            >
+              Logout
+            </button>
+          </div>
         </div>
       </div>
 
@@ -119,6 +175,33 @@
       <hr />
       <h5>You have <span class="num">0</span> items on your list</h5>
       <hr />
+      <div style="display: flex; justify-content: space-between" class="mb-2">
+        <input
+          type="text"
+          placeholder="filter"
+          class="filter"
+          style="
+            height: 35px;
+            width: 200px;
+            background-image: url('../images/filterr.png');
+            background-repeat: no-repeat;
+            background-position: 8px center;
+            background-size: 16px 16px;
+            font-size: 16px;
+            padding-left: 30px;
+          "
+        />
+        <button
+          class="clearBtn"
+          style="
+            padding: 5px;
+            background-color: rgb(252, 157, 157);
+            border-radius: 6px;
+          "
+        >
+          Clear All
+        </button>
+      </div>
       <div>
         <table class="table">
           <thead>

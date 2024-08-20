@@ -12,7 +12,7 @@ loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
   console.log("called");
   const accounts = localStorage.getItem("users");
-  console.log(accounts);
+  // console.log(accounts);
   if (accounts) {
     let userAccounts = JSON.parse(accounts); // collect data from localstorage and change to normal object
     // console.log(userAccounts);
@@ -26,18 +26,23 @@ loginForm.addEventListener("submit", (e) => {
         if (accountFound) {
           if (passwordInput.value === userAccounts[x].password) {
             // alert("correct details");
+
             passwordCorrect = true;
             window.location.href = "codes/todohome.html";
+
             localStorage.setItem("loggedInUser", userNameInput.value);
+            localStorage.setItem("loggedInEmail", userAccounts[x].email);
+            localStorage.setItem("loggedInId", userAccounts[x].id);
             break;
           }
         }
+        console.log(userAccounts);
       }
       if (accountFound && !passwordCorrect) {
         alert("The password you entered is incorrect. Please try again.");
       }
     }
-    if (!accountFound) {
+    if (!accountFound && !passwordCorrect) {
       console.log("incorrect");
       alert(
         "The username or password you entered is incorrect. Please try again."
